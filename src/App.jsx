@@ -4,7 +4,7 @@ import Search from "./components/search";
 import Forecast from "./components/forecast";
 import bgImage from "/images/background-day.png";
 import { BACKEND_SERVER_URL } from "../env";
-import ToggleUnit from "./components/toggleUnit";
+import ToggleUnit from "./components/toggle-unit";
 
 const App = () => {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -15,9 +15,9 @@ const App = () => {
   const handleSearchChange = async () => {
     const [lat, lon] = searchData.value.split(" ");
 
-    const apiURL = `${
-      BACKEND_SERVER_URL
-    }/api/data?lat=${lat}&lon=${lon}&unit=${isMetric ? "metric" : "imperial"}`;
+    const apiURL = `${BACKEND_SERVER_URL}/api/data?lat=${lat}&lon=${lon}&unit=${
+      isMetric ? "metric" : "imperial"
+    }`;
 
     const fetchData = await fetch(apiURL);
     const fetchDataJSON = await fetchData.json();
@@ -54,7 +54,12 @@ const App = () => {
             setSearchData(data);
           }}
         />
-        <ToggleUnit target={() => {setIsMetric((prev) => !prev)}} isMetric={isMetric} />
+        <ToggleUnit
+          target={() => {
+            setIsMetric((prev) => !prev);
+          }}
+          isMetric={isMetric}
+        />
       </div>
       {currentWeather && <CurrentWeather data={currentWeather} />}
 
