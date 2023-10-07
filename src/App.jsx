@@ -3,8 +3,8 @@ import CurrentWeather from "./components/current-weather";
 import Search from "./components/search";
 import Forecast from "./components/forecast";
 import bgImage from "/images/background-day.png";
-import ToggleUnit from "./components/toggleUnit";
 import { BACKEND_SERVER_URL } from "../env";
+import ToggleUnit from "./components/toggleUnit";
 
 const App = () => {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -54,12 +54,7 @@ const App = () => {
             setSearchData(data);
           }}
         />
-        <ToggleUnit
-          target={() => {
-            setIsMetric((prev) => !prev);
-          }}
-          isMetric={isMetric}
-        />
+        <ToggleUnit target={() => {setIsMetric((prev) => !prev)}} isMetric={isMetric} />
       </div>
       {currentWeather && <CurrentWeather data={currentWeather} />}
 
