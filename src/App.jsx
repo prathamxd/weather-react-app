@@ -38,6 +38,7 @@ const App = () => {
 
   // console.log(currentWeather);
   // console.log(forecast);
+  // slipknot
 
   return (
     <div
